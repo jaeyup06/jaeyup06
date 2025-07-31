@@ -45,6 +45,7 @@ function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -58,8 +59,8 @@ function Sidebar() {
 
   const getMenuClass = (path: string) =>
     pathname.startsWith(path)
-      ? "ml-6 font-bold text-white bg-gray-900 rounded px-1"
-      : "ml-7 hover:text-gray-400 bg-transparent border-none cursor-pointer";
+      ? "font-bold text-white bg-gray-900 rounded px-1"
+      : "mx-1 hover:text-gray-400 bg-transparent border-none";
 
   if (isOpen) {
     return (
@@ -96,7 +97,8 @@ function Sidebar() {
                     <Icon />
                     {label}
                   </li>
-                  <ul className="text-sm space-y-1 text-gray-200">
+                  {/* 하위 메뉴 */}
+                  <ul className="text-sm space-y-1 text-gray-200 pl-6">
                     {children.map(({ label: childLabel, path }) => (
                       <li key={path}>
                         <button
@@ -163,15 +165,39 @@ function Sidebar() {
           />
 
           {/* 메뉴 */}
-          <div className="flex flex-col gap-10 items-center">
-            {menuItems.map(({ icon: Icon, label }) => (
-              <button
+          <div className="flex flex-col gap-10 items-center relative">
+            {menuItems.map(({ icon: Icon, label, children }) => (
+              <div
                 key={label}
-                className="text-2xl hover:text-gray-400"
-                aria-label={label}
+                className="relative"
+                onMouseEnter={() => setOpenMenu(label)}
+                onMouseLeave={() => setOpenMenu(null)}
               >
-                <Icon />
-              </button>
+                <div className="absolute left-0 top-0 h-full w-[30px]" />
+
+                <button
+                  className="text-2xl relative leading-none flex hover:text-gray-400"
+                  aria-label={label}
+                >
+                  <Icon className="transition-colors duration-200" />
+                </button>
+
+                {/* 하위 메뉴 */}
+                {openMenu === label && (
+                  <div className="absolute left-[30px] top-1/2 -translate-y-1/2 bg-gray-700 p-2 rounded shadow-md flex flex-col gap-1 z-50 text-sm text-white whitespace-nowrap">
+                    {children.map(({ label: childLabel, path }) => (
+                      <span key={path}>
+                        <button
+                          onClick={() => goToPath(path)}
+                          className={`${getMenuClass(path)} text-left`}
+                        >
+                          {childLabel}
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
           {/* SNS */}
