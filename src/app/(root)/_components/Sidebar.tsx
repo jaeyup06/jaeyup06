@@ -24,8 +24,8 @@ const menuItems = [
     label: "Project",
     icon: FaCode,
     children: [
-      { label: "프로젝트", path: "/project/test" },
-      { label: "프로젝트", path: "/project/test" },
+      { label: "프로젝트", path: "/project" },
+      { label: "프로젝트", path: "/project" },
     ],
   },
   {
