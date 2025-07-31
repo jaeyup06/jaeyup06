@@ -1,9 +1,5 @@
 function Home() {
-  return (
-    <main>
-      <h1 className="text-3xl font-semibold">👋 Hi there</h1>
-    </main>
-  );
+  return null
 }
 
 export default Home;
