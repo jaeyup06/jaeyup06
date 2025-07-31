@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import {
   FaBriefcase,
   FaCode,
@@ -7,7 +10,51 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
+const menuItems = [
+  {
+    label: "Home",
+    icon: FaHome,
+    children: [
+      { label: "인적사항", path: "/home/personal-info" },
+      { label: "목표 · 관심사", path: "/home/goals-interests" },
+      { label: "TMI", path: "/home/tmi" },
+    ],
+  },
+  {
+    label: "Project",
+    icon: FaCode,
+    children: [
+      { label: "프로젝트", path: "/project/test" },
+      { label: "프로젝트", path: "/project/test" },
+    ],
+  },
+  {
+    label: "Career",
+    icon: FaBriefcase,
+    children: [
+      { label: "대외 활동", path: "/career/activities" },
+      { label: "수상", path: "/career/awards" },
+      { label: "자격증", path: "/career/certificates" },
+    ],
+  },
+];
+
 function Sidebar() {
+  const pathname = usePathname();
+
+  const goToPath = (path: string) => {
+    if (pathname == path) {
+      window.location.href = "/";
+    } else {
+      window.location.href = path;
+    }
+  };
+
+  const getMenuClass = (path: string) =>
+    pathname === path
+      ? "font-bold text-white bg-gray-900 rounded px-1"
+      : "hover:text-gray-400 bg-transparent border-none cursor-pointer";
+
   return (
     <main className="h-screen grid">
       <div className="relative bg-gray-800 text-white flex flex-col items-center py-10">
@@ -28,35 +75,26 @@ function Sidebar() {
         {/* 메뉴 */}
         <div className="flex-grow flex items-center w-28">
           <ul className="text-xl text-white space-y-4">
-            <div>
-              <li className="flex items-center gap-2 hover:text-gray-400 cursor-pointer">
-                <FaHome /> Home
-              </li>
-              <ul className="ml-7 text-sm space-y-1 cursor-pointer">
-                <li className="hover:text-gray-400">인적사항</li>
-                <li className="hover:text-gray-400">목표 · 관심사</li>
-                <li className="hover:text-gray-400">TMI</li>
-              </ul>
-            </div>
-            <div>
-              <li className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
-                <FaCode /> Project
-              </li>
-              <ul className="ml-7 text-sm space-y-1 cursor-pointer">
-                <li className="hover:text-gray-400">프로젝트</li>
-                <li className="hover:text-gray-400">프로젝트</li>
-              </ul>
-            </div>
-            <div>
-              <li className="flex items-center gap-2 hover:text-gray-400 cursor-pointer">
-                <FaBriefcase /> Career
-              </li>
-              <ul className="ml-7 text-sm space-y-1 cursor-pointer">
-                <li className="hover:text-gray-400">대외 활동</li>
-                <li className="hover:text-gray-400">수상</li>
-                <li className="hover:text-gray-400">자격증</li>
-              </ul>
-            </div>
+            {menuItems.map(({ label, icon: Icon, children }) => (
+              <div key={label}>
+                <li className="flex items-center gap-2">
+                  <Icon />
+                  {label}
+                </li>
+                <ul className="ml-7 text-sm space-y-1 text-gray-200">
+                  {children.map(({ label: childLabel, path }) => (
+                    <li key={path}>
+                      <button
+                        onClick={() => goToPath(path)}
+                        className={getMenuClass(path)}
+                      >
+                        {childLabel}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </ul>
         </div>
 
