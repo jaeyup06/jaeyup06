@@ -53,8 +53,8 @@ function Sidebar() {
 
   const getMenuClass = (path: string) =>
     pathname.startsWith(path)
-      ? "font-bold text-white bg-gray-900 rounded px-1"
-      : "hover:text-gray-400 bg-transparent border-none cursor-pointer";
+      ? "ml-6 font-bold text-white bg-gray-900 rounded px-1"
+      : "ml-7 hover:text-gray-400 bg-transparent border-none cursor-pointer";
 
   return (
     <main className="h-screen grid">
@@ -82,7 +82,7 @@ function Sidebar() {
                   <Icon />
                   {label}
                 </li>
-                <ul className="ml-7 text-sm space-y-1 text-gray-200">
+                <ul className="text-sm space-y-1 text-gray-200">
                   {children.map(({ label: childLabel, path }) => (
                     <li key={path}>
                       <button
