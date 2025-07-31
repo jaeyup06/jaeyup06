@@ -24,8 +24,8 @@ const menuItems = [
     label: "Project",
     icon: FaCode,
     children: [
-      { label: "프로젝트", path: "/project" },
-      { label: "프로젝트", path: "/project" },
+      { label: "개인 프로젝트", path: "/project/personal-project" },
+      { label: "팀 프로젝트", path: "/project/team-project" },
     ],
   },
   {
@@ -57,7 +57,7 @@ function Sidebar() {
       : "ml-7 hover:text-gray-400 bg-transparent border-none cursor-pointer";
 
   return (
-    <main className="h-screen grid">
+    <div className="grid h-screen w-[250px] translate-x-[0px] transition-transform duration-300">
       <div className="relative bg-gray-800 text-white flex flex-col items-center py-10">
         {/* 정보 */}
         <img
@@ -127,7 +127,7 @@ function Sidebar() {
           </a>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 
