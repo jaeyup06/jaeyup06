@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   FaBriefcase,
   FaCode,
@@ -42,17 +43,22 @@ const menuItems = [
 function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [currentPath, setCurrentPath] = useState(pathname);
 
-  const goToPath = (path: string) => {
-    if (pathname === path) {
-      router.push("/");
+  useEffect(() => {
+    setCurrentPath(pathname);
+  }, [pathname]);
+
+  const goToPath = async (path: string) => {
+    if (currentPath === path) {
+      await router.push("/");
     } else {
-      router.push(path);
+      await router.push(path);
     }
   };
 
   const getMenuClass = (path: string) =>
-    pathname.startsWith(path)
+    currentPath.startsWith(path)
       ? "font-bold text-white bg-gray-900 rounded px-1"
       : "hover:text-gray-400 bg-transparent border-none cursor-pointer";
 
