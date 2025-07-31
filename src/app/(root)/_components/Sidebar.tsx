@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   FaBriefcase,
   FaCode,
@@ -41,17 +41,18 @@ const menuItems = [
 
 function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const goToPath = (path: string) => {
-    if (pathname == path) {
-      window.location.href = "/";
+    if (pathname === path) {
+      router.push("/");
     } else {
-      window.location.href = path;
+      router.push(path);
     }
   };
 
   const getMenuClass = (path: string) =>
-    pathname === path
+    pathname.startsWith(path)
       ? "font-bold text-white bg-gray-900 rounded px-1"
       : "hover:text-gray-400 bg-transparent border-none cursor-pointer";
 
