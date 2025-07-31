@@ -1,7 +1,9 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 import {
+  FaBars,
   FaBriefcase,
   FaCode,
   FaGithub,
@@ -42,6 +44,9 @@ const menuItems = [
 function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   const goToPath = (path: string) => {
     if (pathname === path) {
@@ -56,79 +61,150 @@ function Sidebar() {
       ? "ml-6 font-bold text-white bg-gray-900 rounded px-1"
       : "ml-7 hover:text-gray-400 bg-transparent border-none cursor-pointer";
 
-  return (
-    <div className="grid h-screen w-[250px] translate-x-[0px] transition-transform duration-300">
-      <div className="relative bg-gray-800 text-white flex flex-col items-center py-10">
-        {/* 정보 */}
-        <img
-          src="/profile.jpg"
-          className="w-[104px] h-[104px] rounded-full border-[3px] border-white"
-          alt="프로필"
-        />
+  if (isOpen) {
+    return (
+      <div className="grid h-screen w-[250px] bg-gray-800 text-white transition-all duration-300">
+        <div className="flex flex-col items-center py-10 px-[27px]">
+          {/* 토글 */}
+          <button
+            onClick={toggleSidebar}
+            className="absolute top-4 left-4 text-2xl"
+            aria-label="사이드바 간략히"
+          >
+            <FaBars />
+          </button>
 
-        <h1 className="text-xl font-bold mt-4">김재엽</h1>
-        <ul className="space-y-1 mt-2 text-gray-200 text-sm text-center">
-          <li>한양대학교 ERICA · Robotics 전공</li>
-          <li>010-0000-0000</li>
-          <li>jaeyup06@hanyang.ac.kr</li>
-        </ul>
-
-        {/* 메뉴 */}
-        <div className="flex-grow flex items-center w-28">
-          <ul className="text-xl text-white space-y-4">
-            {menuItems.map(({ label, icon: Icon, children }) => (
-              <div key={label}>
-                <li className="flex items-center gap-2">
-                  <Icon />
-                  {label}
-                </li>
-                <ul className="text-sm space-y-1 text-gray-200">
-                  {children.map(({ label: childLabel, path }) => (
-                    <li key={path}>
-                      <button
-                        onClick={() => goToPath(path)}
-                        className={getMenuClass(path)}
-                      >
-                        {childLabel}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* 정보 */}
+          <img
+            src="/profile.jpg"
+            className="w-[104px] h-[104px] rounded-full border-[3px] border-white"
+            alt="프로필"
+          />
+          <h1 className="text-xl font-bold mt-4">김재엽</h1>
+          <ul className="space-y-1 mt-2 text-gray-200 text-sm text-center whitespace-nowrap">
+            <li>한양대학교 ERICA · Robotics 전공</li>
+            <li>010-0000-0000</li>
+            <li>jaeyup06@hanyang.ac.kr</li>
           </ul>
-        </div>
 
-        {/* SNS */}
-        <div className="flex gap-8 text-white text-4xl items-center">
-          <a
-            href="https://github.com/jaeyup06"
-            target="_blank"
-            aria-label="GitHub"
-            className="hover:text-gray-400"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://instagram.com/jaeyup06"
-            target="_blank"
-            aria-label="Instagram"
-            className="hover:text-gray-400"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://youtube.com/@jaeyup06"
-            target="_blank"
-            aria-label="YouTube"
-            className="hover:text-gray-400"
-          >
-            <FaYoutube />
-          </a>
+          {/* 메뉴 */}
+          <div className="flex-grow flex items-center w-28">
+            <ul className="text-xl text-white space-y-4">
+              {menuItems.map(({ label, icon: Icon, children }) => (
+                <div key={label}>
+                  <li className="flex items-center gap-2">
+                    <Icon />
+                    {label}
+                  </li>
+                  <ul className="text-sm space-y-1 text-gray-200">
+                    {children.map(({ label: childLabel, path }) => (
+                      <li key={path}>
+                        <button
+                          onClick={() => goToPath(path)}
+                          className={getMenuClass(path)}
+                        >
+                          {childLabel}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </ul>
+          </div>
+
+          {/* SNS */}
+          <div className="flex gap-8 text-white text-4xl items-center">
+            <a
+              href="https://github.com/jaeyup06"
+              target="_blank"
+              aria-label="GitHub"
+              className="hover:text-gray-400"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://instagram.com/jaeyup06"
+              target="_blank"
+              aria-label="Instagram"
+              className="hover:text-gray-400"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://youtube.com/@jaeyup06"
+              target="_blank"
+              aria-label="YouTube"
+              className="hover:text-gray-400"
+            >
+              <FaYoutube />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="h-screen w-[58px] bg-gray-800 text-white flex flex-col items-center transition-all duration-300">
+        <div className="flex flex-col justify-between items-center h-full w-full pt-16 pb-8">
+          {/* 토글 */}
+          <button
+            onClick={toggleSidebar}
+            className="absolute top-4 left-4 text-2xl"
+            aria-label="사이드바 간략히"
+          >
+            <FaBars />
+          </button>
+          {/* 정보 */}
+          <img
+            src="/profile.jpg"
+            className="w-[36px] h-[36px] rounded-full border-[2px] border-white"
+            alt="프로필"
+          />
+
+          {/* 메뉴 */}
+          <div className="flex flex-col gap-10 items-center">
+            {menuItems.map(({ icon: Icon, label }) => (
+              <button
+                key={label}
+                className="text-2xl hover:text-gray-400"
+                aria-label={label}
+              >
+                <Icon />
+              </button>
+            ))}
+          </div>
+          {/* SNS */}
+          <div className="flex flex-col gap-10 items-center text-2xl">
+            <a
+              href="https://github.com/jaeyup06"
+              target="_blank"
+              aria-label="GitHub"
+              className="hover:text-gray-400"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://instagram.com/jaeyup06"
+              target="_blank"
+              aria-label="Instagram"
+              className="hover:text-gray-400"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://youtube.com/@jaeyup06"
+              target="_blank"
+              aria-label="YouTube"
+              className="hover:text-gray-400"
+            >
+              <FaYoutube />
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Sidebar;

@@ -13,7 +13,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
     <html lang="ko">
       <body className="font-pretendard antialiased grid grid-cols-[auto_1fr]">
         <Sidebar />
-        <main className="relative">
+        <main className="relative h-screen">
           <Overlay />
           <img
             src="/banner.jpg"
