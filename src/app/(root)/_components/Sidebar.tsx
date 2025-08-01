@@ -62,6 +62,7 @@ function Sidebar() {
       ? "font-bold text-white bg-gray-900 rounded px-1"
       : "mx-1 hover:text-gray-400 bg-transparent border-none";
 
+  // 사이드바 자세히
   if (isOpen) {
     return (
       <div className="grid h-screen w-[250px] bg-gray-800 text-white transition-all duration-300">
@@ -146,6 +147,7 @@ function Sidebar() {
       </div>
     );
   } else {
+    // 사이드바 간략히
     return (
       <div className="h-screen w-[58px] bg-gray-800 text-white flex flex-col items-center transition-all duration-300">
         <div className="flex flex-col justify-between items-center h-full w-full pt-16 pb-8">
@@ -153,7 +155,7 @@ function Sidebar() {
           <button
             onClick={toggleSidebar}
             className="absolute top-4 left-4 text-2xl hover:text-gray-400"
-            aria-label="사이드바 간략히"
+            aria-label="사이드바 자세히"
           >
             <FaBars />
           </button>

@@ -11,16 +11,23 @@ export const metadata: Metadata = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="font-pretendard antialiased grid grid-cols-[auto_1fr]">
+      <body className="font-pretendard antialiased flex overflow-hidden">
+        {/* 사이드바 */}
         <Sidebar />
-        <main className="relative h-screen">
-          <Overlay />
-          <img
-            src="/banner.jpg"
-            className="w-full h-full object-cover"
-            alt="배너"
-          />
-          <div className="absolute top-0 left-0">{children}</div>
+
+        {/* 메인 */}
+        <main className="relative flex-1 h-screen overflow-y-auto">
+          {/* 배경 */}
+          <div className="fixed inset-0 -z-10">
+            <Overlay />
+            <img
+              src="/banner.jpg"
+              className="w-full h-full object-cover"
+              alt="배경"
+            />
+          </div>
+          {/* 페이지 */}
+          <div className="relative">{children}</div>
         </main>
       </body>
     </html>
