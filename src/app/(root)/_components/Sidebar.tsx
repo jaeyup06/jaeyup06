@@ -17,8 +17,8 @@ const menuItems = [
     label: "Home",
     icon: FaHome,
     children: [
-      { label: "인적사항", path: "/home/personal-info" },
-      { label: "목표 · 관심사", path: "/home/goals-interests" },
+      { label: "자기소개", path: "/home/about" },
+      { label: "관심사 · 목표", path: "/home/interests-goals" },
       { label: "TMI", path: "/home/tmi" },
     ],
   },
@@ -69,7 +69,7 @@ function Sidebar() {
           {/* 토글 */}
           <button
             onClick={toggleSidebar}
-            className="absolute top-4 left-4 text-2xl"
+            className="absolute top-4 left-4 text-2xl hover:text-gray-400"
             aria-label="사이드바 간략히"
           >
             <FaBars />
@@ -152,7 +152,7 @@ function Sidebar() {
           {/* 토글 */}
           <button
             onClick={toggleSidebar}
-            className="absolute top-4 left-4 text-2xl"
+            className="absolute top-4 left-4 text-2xl hover:text-gray-400"
             aria-label="사이드바 간략히"
           >
             <FaBars />
