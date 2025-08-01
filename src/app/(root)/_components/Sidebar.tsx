@@ -64,8 +64,10 @@ function Sidebar() {
 
   return (
     <div
-      className={`overflow-hidden transition-all duration-300 bg-gray-800 text-white h-screen flex ${
-        isOpen ? "w-[250px]" : "w-[58px]"
+      className={`transition-all duration-300 bg-gray-800 text-white h-screen flex ${
+        isOpen
+          ? "w-[250px] overflow-hidden"
+          : "w-[58px] overflow-visible"
       }`}
     >
       {isOpen ? (
