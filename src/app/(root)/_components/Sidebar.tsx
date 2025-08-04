@@ -44,7 +44,7 @@ const menuItems = [
 function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
