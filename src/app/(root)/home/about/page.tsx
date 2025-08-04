@@ -26,10 +26,10 @@ function Home() {
         </div>
 
         {/* 프로필 이미지 */}
-        <div className="w-40 h-40 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-xl border-3 shrink-0">
+        <div className="w-40 h-40 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-lg border-3 shrink-0">
           <img
             src="/profile.jpg"
-            alt="김재엽 프로필"
+            alt="프로필"
             className="w-full h-full object-cover"
           />
         </div>
@@ -38,15 +38,15 @@ function Home() {
       {/* 하단 콘텐츠 */}
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 w-full">
         <li className="w-full">
-          <div className="aspect-[5/3] w-full bg-gray-400 rounded-2xl shadow-md" />
+          <div className="aspect-[5/3] w-full bg-gray-400 rounded-2xl shadow-lg" />
           <p className="text-center mt-2 text-lg text-gray-700">text</p>
         </li>
         <li className="w-full">
-          <div className="aspect-[5/3] w-full bg-gray-400 rounded-2xl shadow-md" />
+          <div className="aspect-[5/3] w-full bg-gray-400 rounded-2xl shadow-lg" />
           <p className="text-center mt-2 text-lg text-gray-700">text</p>
         </li>
         <li className="w-full">
-          <div className="aspect-[5/3] w-full bg-gray-400 rounded-2xl shadow-md" />
+          <div className="aspect-[5/3] w-full bg-gray-400 rounded-2xl shadow-lg" />
           <p className="text-center mt-2 text-lg text-gray-700">text</p>
         </li>
       </ul>
