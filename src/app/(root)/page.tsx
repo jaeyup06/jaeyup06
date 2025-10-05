@@ -2,7 +2,7 @@ import { FaGithub, FaInstagram, FaYoutube } from "react-icons/fa";
 
 function Home() {
   return (
-    <main className="flex items-center justify-center min-h-screen bg-[url('/banner.jpg')] bg-cover bg-center">
+    <main className="flex items-center justify-center min-h-screen bg-[url('/banner.jpg')] bg-cover bg-center h-screen w-screen overflow-hidden">
       <div
         className="backdrop-blur-2xl bg-white/10 border border-white/20 items-center py-16 px-16 rounded-3xl shadow-xl flex flex-col md:flex-row md:space-x-16 text-gray-100
                    max-sm:scale-[0.75]"
