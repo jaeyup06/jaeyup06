@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "재엽 서식지",
-  description: "My portfolio",
+  description: "My profile",
 };
 
 function RootLayout({ children }: { children: React.ReactNode }) {
