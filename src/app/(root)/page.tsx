@@ -4,7 +4,7 @@ function Home() {
   return (
     <main className="flex items-center justify-center bg-[url('/banner.jpg')] bg-cover bg-center min-h-svh w-screen overflow-hidden">
       <div
-        className="backdrop-blur-2xl bg-white/10 border border-white/20 items-center py-16 px-16 rounded-3xl shadow-xl flex flex-col lg:flex-row lg:space-x-16 text-gray-100
+        className="backdrop-blur-2xl bg-white/10 border border-white/20 items-center py-16 px-10 lg:px-16 rounded-3xl shadow-xl flex flex-col lg:flex-row lg:space-x-16 text-gray-100
                    max-sm:scale-[0.60]"
       >
         <img
@@ -16,7 +16,7 @@ function Home() {
         <div className="mt-8 lg:mt-0 text-center lg:text-left text-white">
           <h1 className="text-4xl font-bold mb-4">김재엽</h1>
           <ul className="text-2xl leading-relaxed whitespace-nowrap">
-            <li>한양대학교 ERICA · Robotics 전공</li>
+            <li>한양대학교 ERICA 로봇융합전공 25학번</li>
             <li>010-0000-0000</li>
             <li>jaeyup06@hanyang.ac.kr</li>
           </ul>
